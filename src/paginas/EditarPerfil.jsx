@@ -20,7 +20,7 @@ const EditarPerfil = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    const {nombre, email} = perfil;
+    const {nombre, email, web, telefono} = perfil;
 
     if([nombre, email].includes('')){
       setAlerta({
