@@ -17,10 +17,7 @@ function Formulario() {
 
     const {guardarPaciente, paciente} = usePacientes();
 
-    const formaterarFecha = (fecha) => {
-        const nuevaFecha = new Date(fecha);
-        return new Intl.DateTimeFormat('es-MX').format(nuevaFecha);
-    }
+    
 
     // se ejecuta cuando hay un cambio en paciente
     useEffect(() => {
@@ -28,7 +25,7 @@ function Formulario() {
             setNombre(paciente.nombre)
             setPropietario(paciente.propietario)
             setEmail(paciente.email)
-            setFecha(formaterarFecha(paciente.fecha))
+            setFecha(new Date(paciente.fecha).toLocaleDateString())
             setSintomas(paciente.sintomas)
             setId(paciente._id)
         }
