@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import Alerta from './Alerta';
 import usePacientes from '../hooks/usePacientes';
+import { format } from 'date-fns';
 
 function Formulario() {
 
@@ -22,7 +23,7 @@ function Formulario() {
             setNombre(paciente.nombre)
             setPropietario(paciente.propietario)
             setEmail(paciente.email)
-            setFecha(new Date(paciente.fecha).toISOString().split('T')[0])
+            setFecha(format(new Date(paciente.fecha), 'yyyy-MM-dd', { timeZone: 'America/Mexico_City' }))
             setSintomas(paciente.sintomas)
             setId(paciente._id)
         }
