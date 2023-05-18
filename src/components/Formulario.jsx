@@ -16,12 +16,13 @@ function Formulario() {
 
     const {guardarPaciente, paciente} = usePacientes();
 
+    // se ejecuta cuando hay un cambio en paciente
     useEffect(() => {
         if(paciente?.nombre){
             setNombre(paciente.nombre)
             setPropietario(paciente.propietario)
             setEmail(paciente.email)
-            setFecha(paciente.fecha)
+            setFecha(new Date(paciente.fecha).toLocaleDateString('es-MX'))
             setSintomas(paciente.sintomas)
             setId(paciente._id)
         }
@@ -32,7 +33,7 @@ function Formulario() {
         e.preventDefault();
 
         // validar formulario
-        if([nombre, propietario, email,fecha, sintomas].includes('')){
+        if([nombre, propietario, email, fecha, sintomas].includes('')){
            setAlerta({
             msg: 'Todos los campos son obligatorios',
             error: true
