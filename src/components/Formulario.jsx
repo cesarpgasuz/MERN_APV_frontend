@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import Alerta from './Alerta';
 import usePacientes from '../hooks/usePacientes';
-import { format } from 'date-fns';
+// import { format } from 'date-fns';
 
 function Formulario() {
 
@@ -17,13 +17,18 @@ function Formulario() {
 
     const {guardarPaciente, paciente} = usePacientes();
 
+    const formaterarFecha = (fecha) => {
+        const nuevaFecha = new Date(fecha);
+        return new Intl.DateTimeFormat('es-MX').format(nuevaFecha);
+    }
+
     // se ejecuta cuando hay un cambio en paciente
     useEffect(() => {
         if(paciente?.nombre){
             setNombre(paciente.nombre)
             setPropietario(paciente.propietario)
             setEmail(paciente.email)
-            setFecha(format(new Date(paciente.fecha), 'yyyy-MM-dd', { timeZone: 'America/Mexico_City' }))
+            setFecha(formaterarFecha(paciente.fecha))
             setSintomas(paciente.sintomas)
             setId(paciente._id)
         }
