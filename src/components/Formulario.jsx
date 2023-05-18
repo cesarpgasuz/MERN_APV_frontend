@@ -22,7 +22,7 @@ function Formulario() {
             setNombre(paciente.nombre)
             setPropietario(paciente.propietario)
             setEmail(paciente.email)
-            setFecha(new Date(paciente.fecha).toLocaleDateString('en-US'))
+            setFecha(new Date(paciente.fecha).toLocaleDateString('en-CA'))
             setSintomas(paciente.sintomas)
             setId(paciente._id)
         }
